@@ -3,54 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Calculatrice.William;
 
 namespace Calculatrice.Expressions
 {
     public class ExpressionBuilder
     {
-        private IExpression expression;
-
-        public ExpressionBuilder(int initial) => expression = new Operand(initial);
-        public ExpressionBuilder(string expr) : this(expr, false) { }
-        public ExpressionBuilder(string expr , bool _priority)
+        private Expression expression;
+        public ExpressionBuilder(int initial) { expression = new Expression(initial); }
+        public ExpressionBuilder(string input)
         {
-            var postfix = PostfixGenerator.GeneratePostfix(expr);
-            var stack = new Stack<int>();
-            var _first = int.Parse(postfix.First());
+            var tokens = input.Split(' ');
 
-            expression = new Operand(_first);
-            for(int i = 1; i < postfix.Count(); i++)
+            expression = new Expression(int.Parse(tokens[0]));
+            var op = "";
+            foreach (var token in tokens.Skip(1))
             {
-                var token = postfix.ElementAt(i);
-                if (int.TryParse(token, out var _value))
-                    stack.Push(_value);
+                if (int.TryParse(token, out var i))
+                    expression.Push(new Number(i), op);
                 else
-                {
-                    var n = stack.Pop();
-                    var _operator = (Operator)(token.ToCharArray()[0]);
-                    expression = new CompositeExpression(expression, new Operand(n), _operator , _priority);
-                }
+                    op = token;
             }
         }
-
-        public void Add(int n) => expression = new CompositeExpression(expression, new Operand(n), Operator.ADD);
-
-        public void Add(ExpressionBuilder e) => expression = new CompositeExpression(expression, e.Build(true), Operator.ADD);
-
-        public void Subtract(int n) => expression = new CompositeExpression(expression, new Operand(n), Operator.SUB);
-
-        public void Subtract(ExpressionBuilder e) => expression = new CompositeExpression(expression, e.Build(true), Operator.SUB);
-
-        public void Multiply(int n) => expression = new CompositeExpression(expression, new Operand(n), Operator.MUL);
-
-        public void Multiply(ExpressionBuilder e) => expression = new CompositeExpression(expression, e.Build(true), Operator.MUL);
-
-        public void Divide(int n) => expression = new CompositeExpression(expression, new Operand(n), Operator.DIV);
-
-        public void Divide(ExpressionBuilder e) => expression = new CompositeExpression(expression, e.Build(true), Operator.DIV);
+        public void Operate(int n, string op) => expression.Push(new Number(n), op);
+        public void Operate(ExpressionBuilder e, string op) => expression.Push(e.Build(), op);
+        public void Add(int n) => Operate(n, "+");
+        public void Add(ExpressionBuilder e) { Operate(e, "+"); }
+        public void Subtract(int n) => Operate(n, "-");
+        public void Subtract(ExpressionBuilder e) { expression.Push(e.Build(), "-"); }
+        public void Multiply(int n) => Operate(n, "*");
+        public void Multiply(ExpressionBuilder e) { expression.Push(e.Build(), "*"); }
+        public void Divide(int n) => Operate(n, "/");
+        public void Divide(ExpressionBuilder e) { expression.Push(e.Build(), "/"); }
 
         public IExpression Build() => expression;
-        public IExpression Build(bool _priority) { ((CompositeExpression)expression).Priority = true; return expression; }
     }
 }

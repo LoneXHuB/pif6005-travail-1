@@ -9,7 +9,7 @@ namespace Calculatrice.Visitors
 {
     public interface IExpressionVisitor
     {
-        public void Visit(Operand _op);
-        public void Visit(CompositeExpression _expr);
+        public void Visit(Number n);
+        public void Visit(Expression e);
     }
 }

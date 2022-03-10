@@ -10,11 +10,10 @@ namespace Calculatrice.Visitors
     public class PrintVisitor : IExpressionVisitor
     {
         private string result;
-
         public override string ToString() => result;
 
-        public void Visit(Operand _val) => result = _val.ToString();
+        public void Visit(Number n) => result = n.ToString(false);
 
-        public void Visit(CompositeExpression _expr) => result = _expr.ToString();
+        public void Visit(Expression e) => result = e.ToString(false);
     }
 }

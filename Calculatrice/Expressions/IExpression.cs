@@ -9,6 +9,8 @@ namespace Calculatrice.Expressions
 {
     public interface IExpression
     {
-        public void Accept(IExpressionVisitor _visitor);
+        public int Calculate();
+        public string ToString(bool parenthesis);
+        public void Accept(IExpressionVisitor visitor);
     }
 }

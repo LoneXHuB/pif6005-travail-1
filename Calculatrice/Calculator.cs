@@ -6,20 +6,9 @@ namespace Calculatrice
 {
     public class Calculator
     {
-        public int Calculate(string input)
-        {
-            var _eBuilder = new ExpressionBuilder(input);
-            var _expression = _eBuilder.Build();
+        public int Calculate(string input) => Calculate(new ExpressionBuilder(input).Build());
 
-           return Calculate(_expression);
-        }
-
-        public int Calculate(IExpression expr)
-        {
-            var _calcVisitor = new CalculateVisitor();
-            Visit(expr, _calcVisitor);
-            return _calcVisitor.Result;
-        }
+        public int Calculate(IExpression expr) => expr.Calculate();
 
         public void Visit(IExpression expr, IExpressionVisitor visitor) => expr.Accept(visitor);
     }

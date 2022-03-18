@@ -1,5 +1,6 @@
 using Calculatrice;
 using Calculatrice.Expressions;
+using Calculatrice.Simple;
 using Calculatrice.Visitors;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -28,12 +29,6 @@ namespace CalculatriceTests
             Assert.AreEqual(-2, calculator.Calculate("2 * 4 + 3 - 15 / 2"));
         }
 
-        // Facultatif, pour points bonus!
-        //[TestMethod]
-        public void CalculateComplexString()
-        {
-            Assert.AreEqual(16, calculator.Calculate("2 + (5 - 3) * (16 / 4)"));
-        }
 
         [TestMethod]
         public void CalculateSimpleExpression()

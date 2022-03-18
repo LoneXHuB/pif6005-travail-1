@@ -6,6 +6,7 @@ namespace Calculatrice
 {
     public class Calculator
     {
+
         public int Calculate(string input) => Calculate(new ExpressionBuilder(input).Build());
 
         public int Calculate(IExpression expr) => expr.Calculate();

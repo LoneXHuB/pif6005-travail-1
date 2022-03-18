@@ -24,6 +24,7 @@ namespace Calculatrice.Expressions
                     op = token;
             }
         }
+
         public void Operate(int n, string op) => expression.Push(new Number(n), op);
         public void Operate(ExpressionBuilder e, string op) => expression.Push(e.Build(), op);
         public void Add(int n) => Operate(n, "+");

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Calculatrice.Calculator">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculatrice.PostfixGenerator">
+    <Position X="2.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PostfixGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculatrice.Expressions.Expression" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <AssociationLine Name="expressions" Type="Calculatrice.Expressions.IExpression" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.25" Y="2.663" />
+        <Point X="12.125" Y="2.663" />
+        <Point X="12.125" Y="3.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.088" Y="0.31" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAACAAAAAAAAAgAAAACAI=</HashCode>
+      <FileName>Expressions\Expression.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="expressions" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Orientation="Right" Position="2.09" />
+  </Class>
+  <Class Name="Calculatrice.Expressions.ExpressionBuilder">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAQAAAAAAAAADAAAAABAAgAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Expressions\ExpressionBuilder.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="expression" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Calculatrice.Expressions.Number" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAACAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Expressions\Number.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="1.348" />
+  </Class>
+  <Class Name="Calculatrice.Visitors.CalculateVisitor" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Visitors\CalculateVisitor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.1" />
+  </Class>
+  <Class Name="Calculatrice.Visitors.PrintVisitor" BaseTypeListCollapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEBAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Visitors\PrintVisitor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.1" />
+  </Class>
+  <Interface Name="Calculatrice.Expressions.IExpression">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\IExpression.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Calculatrice.Visitors.IExpressionVisitor">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Visitors\IExpressionVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="8.83" />
+</ClassDiagram>

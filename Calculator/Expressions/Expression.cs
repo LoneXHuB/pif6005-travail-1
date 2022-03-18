@@ -9,10 +9,11 @@ namespace Calculatrice.Expressions
 {
     public class Expression : IExpression
     {
-        private readonly List<IExpression> expressions = new();
-        private readonly List<string> operators = new();
+        private readonly List<IExpression> expressions = new List<IExpression>();
+        private readonly List<string> operators = new List<string>();
 
         public Expression(int i) => expressions.Add(new Number(i));
+
         public int Calculate()
         {
             var strNumbers = new List<string>();

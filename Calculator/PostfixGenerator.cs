@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculatrice
 {
-    class PostfixGenerator
+    public class PostfixGenerator
     {
         public static IEnumerable<string> GeneratePostfix(string input)
         {

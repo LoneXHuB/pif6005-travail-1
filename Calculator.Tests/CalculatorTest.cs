@@ -18,6 +18,16 @@ namespace CalculatriceTests
         }
 
         [TestMethod]
+        public void IsPostfixTest()
+        {
+            var builder = new ExpressionBuilder(2);
+            builder.Add(3);
+            builder.Add(4);
+            var expression = builder.Build();
+
+            Assert.IsTrue(calculator.IsPostfix(expression));
+        }
+        [TestMethod]
         public void CalculateSimpleString()
         {
             Assert.AreEqual(5, calculator.Calculate("2 + 3"));

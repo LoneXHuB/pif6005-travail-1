@@ -60,5 +60,22 @@ namespace Calculatrice
 
             Assert.AreEqual(_expct, _actual);
         }
+
+        [TestMethod()]
+        public void IsPostfix_Test_true()
+        {
+            var _test = PostfixGenerator.GeneratePostfix("5 + 5 + 1");
+            Assert.IsTrue(PostfixGenerator.IsPostfix(_test));
+        }
+
+        [TestMethod()]
+        public void CalculateNumber_Test()
+        {
+            var _test = PostfixGenerator.GeneratePostfix("5 + 5 + 1");
+            var _expct = "11";
+            var _actual = PostfixGenerator.CalculateNumber(_test);
+
+            Assert.AreEqual( _expct, _actual);  
+        }
     }
 }

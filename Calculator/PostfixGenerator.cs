@@ -3,11 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calculatrice.Expressions;
 
 namespace Calculatrice
 {
     public class PostfixGenerator
     {
+        private static Number number;
+        
+        public static string CalculateNumber(IEnumerable<string> postfix)
+        {
+            var _result = Calculate(postfix);
+            number = new Number(_result);
+
+            return number.ToString(true);
+        }
+
+        public static bool IsPostfix(IEnumerable<String> input)
+        {
+            var _it = 0;
+            var _lastWasNum = false;
+            foreach(var token in input)
+            { 
+                if (int.TryParse(token, out var _))
+                {
+                    if (_it > 1 && _lastWasNum) return false;
+                    _lastWasNum = true;
+                }
+                else
+                {
+                    if (!_lastWasNum) return false; 
+                    _lastWasNum = false;
+                    if (_it == 0) return false;
+                }
+                _it++; 
+            }
+
+            return true;
+        }
+    
         public static IEnumerable<string> GeneratePostfix(string input)
         {
             var postfixStack = new Stack<string>();
